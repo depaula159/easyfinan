@@ -109,6 +109,12 @@ app.post("/blog-auth", (req, res) => {
   });
 });
 
+app.get("/all-articles", (req, res)=>{
+  article.find({}).lean().exec((art)=>{
+    return res.json(art)
+  })
+})
+
 // Server
 
 app.listen(process.env.PORT || 8000, () => {
