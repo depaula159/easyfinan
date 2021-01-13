@@ -8,6 +8,10 @@ const app = express();
 const cors = require("cors")
 app.use(cors())
 
+// dotEnv
+
+require('dotenv').config()
+
 // Body Parser
 
 const bodyParser = require("body-parser");
@@ -20,7 +24,7 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect(
-    "mongodb+srv://dev_test:KQn2oau8VINGCjZa@cluster0.lvdox.mongodb.net/test-easyfinan?retryWrites=true&w=majority",
+    process.env.MONGO_URL,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
