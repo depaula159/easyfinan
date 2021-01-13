@@ -3,6 +3,11 @@
 const express = require("express");
 const app = express();
 
+// CORS
+
+const cors = require("cors")
+app.use(cors())
+
 // Body Parser
 
 const bodyParser = require("body-parser");
@@ -102,6 +107,6 @@ app.post("/blog-auth", (req, res) => {
 
 // Server
 
-app.listen(8000, () => {
+app.listen(process.env.PORT || 8000, () => {
   console.log("Servidor rodando na porta" + ":" + "8000");
 });
