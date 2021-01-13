@@ -110,13 +110,15 @@ app.post("/blog-auth", (req, res) => {
 });
 
 app.get("/all-articles", (req, res)=>{
-  article.find({}).lean().exec((art)=>{
+  article.find({}).then((art)=>{
     return res.json(art)
+  }).catch((err) => {
+    console.log(err)
   })
 })
 
 // Server
 
-app.listen(process.env.PORT || 8000, () => {
-  console.log("Servidor rodando na porta" + ":" + "8000");
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Servidor rodando na porta" + ":" + "3000");
 });
